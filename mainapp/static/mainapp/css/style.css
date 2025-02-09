@@ -1,0 +1,146 @@
+/*1. Основные общие стили 
+Общее в теле: */
+body
+{
+    background-color: #FFF6EA;
+}
+/* Общий стиль для брендовых текстов */
+.brand-text
+{
+    font-family: "Fugaz One";
+    color:#525B58;
+    margin-right:auto;
+}
+/* Общее в ссылках: */
+a
+{
+    font-family: "Fira Sans", serif;
+    text-decoration: none;
+    color: #525B58;
+}
+.topNavigation{
+    font-family: "Fugaz One";
+    font-size: 20px;
+    color: white;
+}
+/* Общее в main */
+main{
+    padding-top: 70px;
+}
+/* Общее в подвале: */
+footer
+{
+    font-family: "Fira Sans", serif;
+    font-size: 20;
+    color:#525B58;
+}
+.footer-navigation
+{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.footer-nav-left, .footer-nav-right 
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-navigation a {
+    margin: 5px 10px;
+}
+
+.copyright {
+    text-align: right;
+}
+/* buttons */
+button
+{
+    font-family: "Fira Sans", serif;
+    font-size:25px;
+    background-color: #9E6752;
+    border-radius: 10px;
+    border: none;
+    color:white;
+    margin:auto;
+    padding: auto;
+}
+button:hover
+{
+    background-color: #9a7161;
+}
+.h-buttons {
+    margin-left: 10px;
+}
+
+/* Mobile */
+@media (max-width: 1023px) 
+{
+    body {
+        background-color: #fefefe;
+        font-family: "Fira Sans", serif;
+    }
+    header{
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 70px;
+        background-color: #FFF6EA;
+        box-shadow: 0, 2px, 4px rgba(0,0,0,0.4);
+        z-index:99999999;
+        padding: 5px 10px 5px 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    button{
+        width:100px;
+        height: 50px;
+        font-size: 15px;
+    }
+    main{
+        padding-top:70px;
+    }
+}
+/* Pad and Desktop */
+@media (min-width: 1024px)
+{
+    body {
+        background-color: #fefefe;
+        font-family: "Fira Sans", serif;
+    }
+    header{
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 90px;
+        background-color: #FFF6EA;
+        box-shadow: 0, 2px, 4px rgba(0,0,0,0.4);
+        z-index:99999999;
+        padding: 5px 10px 5px 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    button{
+        width:120px;
+        height: 60px;
+        font-size: 15px;
+    }
+    main{
+        padding-top:90px;
+    }
+    .footer-navigation {
+        justify-content: center;
+    }
+
+    .footer-nav-left, .footer-nav-right {
+        flex-direction: row;
+    }
+}
+/* Конец общих стилей для index.html */
