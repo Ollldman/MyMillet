@@ -1,4 +1,16 @@
-const autorizationForm = document.getElementsByClassName('authorization-field');
+const autorizationForm = document.getElementById('modalAuth');
 const signInButton = document.getElementById('signInB');
 
-if (signInButton.)
+signInButton.onclick = function(event)
+{
+    event.preventDefault();
+    this.autorizationForm.style.display = "block";
+}
+
+window.onclick = function(event)
+{
+    if (event.target == autorizationForm)
+    {
+        autorizationForm.style.display = "none"
+    }
+}

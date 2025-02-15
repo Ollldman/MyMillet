@@ -11,7 +11,7 @@
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-    <div class="autorization-field"></div>
+    <div class="autorization-field" id="modalAuth"></div>
     <header>
         <!--Логотип подставить сюда!!!-->
         <a href="/" class="brand-text" style="font-size:20px;">MyMillet</a>
@@ -38,5 +38,6 @@
             <p class="copyright">&copy; 2021 My Bakery</p>
         </footer>
     </main>
+    <script src="{% static 'mainapp/js/autorization_field_changer' %}"></script>
 </body>
 </html>
