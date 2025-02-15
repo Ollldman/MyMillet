@@ -8,34 +8,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Fugaz+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'mainapp/css/style.css' %}">
+    <link rel="icon" type="image/webp" src="{% static 'mainapp/img/favicon/favicon.webp' %}">
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
+    <!-- Динамическое окно авторизации -->
     <div class="autorization-field" id="modalAuth"></div>
+    <!-- Заголовок -->
     <header>
-        <!--Логотип подставить сюда!!!-->
-        <a href="/" class="brand-text" style="font-size:20px;">MyMillet</a>
+        <!--Логотип и название-->
+        <div class="header_left">
+        <a href="/"><img src="{% static 'mainapp/img/favicon/favicon.svg' %}" alt="Logo" class="favicon-logo"></a>
+        <a href="/" class="brand-text" style="font-size:32px;">MyMillet</a>
+        </div>
         <!--Кнопки-->
+        <div class="header_right">
         <a href="/" class="h-buttons" id="basketB"><button>Basket</button></a>
         <a href="/" class="h-buttons" id="signInB"><button>Sign in</button></a>
         <!--Количество товаров в корзине-->
+        </div>
     </header>
     <main>
         {% block content %}{% endblock content %}
         <footer>
             <div class="footer-navigation">
                 <div class="footer-nav-left">
-                    <a href="\">Shop</a>
-                    <a href="\">My profile</a>
-                    <a href="\">Home page</a>
+                    <a class="footer_nav_button" href="\">Shop</a>
+                    <a class="footer_nav_button" href="\">My profile</a>
+                    <a class="footer_nav_button" href="\">Home page</a>
                 </div>
                 <div class="footer-nav-right">
-                    <a href="\">Delivery&Map</a>
-                    <a href="\">Who we are</a>
-                    <a href="\">Newsstand</a>
+                    <a class="footer_nav_button" href="\">Delivery&Map</a>
+                    <a class="footer_nav_button" href="\">Who we are</a>
+                    <a class="footer_nav_button" href="\">Newsstand</a>
                 </div>
             </div>
-            <p class="copyright">&copy; 2021 My Bakery</p>
+            <p class="copyright">&copy; 2025 MyMillet</p>
         </footer>
     </main>
     <script src="{% static 'mainapp/js/autorization_field_changer' %}"></script>

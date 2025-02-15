@@ -1,6 +1,11 @@
 {% extends "mainapp/template_layout.html" %}
+{% load static %}
 {% block title %}MyMillet{% endblock title %}
 {% block content %}
+<picture>
+    <source srcset="{% static 'mainapp/img/homepage/top_title_pic.webp'%}" alt="Main theme of our bakery." class="main_theme_pic">
+    <img src="{% static 'mainapp/img/homepage/top_title_pic.webp'%}" alt="Main theme of our bakery." class="main_theme_pic">
+</picture>
 <a href="/" class="topNavigation">Shop-></a>
 <a href="/" class="topNavigation">Who we are-></a>
 {% endblock content %}

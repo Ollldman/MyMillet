@@ -3,7 +3,19 @@
 body
 {
     background-color: #FFF6EA;
+    margin: 0;
+    padding: 0;
 }
+
+/* Header */
+/* Иконка */
+.favicon-logo
+{
+    width: 48px;
+    height: 48px;
+    padding: 20px;
+}
+
 /* Общий стиль для брендовых текстов */
 .brand-text
 {
@@ -11,6 +23,7 @@ body
     color:#525B58;
     margin-right:auto;
 }
+
 /* Общее в ссылках: */
 a
 {
@@ -23,10 +36,30 @@ a
     font-size: 20px;
     color: white;
 }
+.header_left
+{
+    display: flex;
+    align-items: center;
+}
+.header_right
+{
+    display: flex;
+    align-items: center;
+}
+
 /* Общее в main */
 main{
     padding-top: 70px;
 }
+
+/* Главное изображение */
+.main_theme_pic
+{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Общее в подвале: */
 footer
 {
@@ -46,13 +79,15 @@ footer
     display: flex;
     flex-direction: column;
 }
-
 .footer-navigation a {
     margin: 5px 10px;
 }
-
 .copyright {
     text-align: right;
+}
+.footer_nav_button:hover
+{
+    color:#202322;
 }
 /* buttons */
 button
@@ -75,7 +110,7 @@ button:hover
 }
 
 
-
+/* media content resize */
 
 /* Mobile */
 @media (max-width: 1023px) 
@@ -96,7 +131,7 @@ button:hover
         padding: 5px 10px 5px 10px;
         box-sizing: border-box;
         display: flex;
-        justify-content: space-between;
+        justify-content:space-between;
         align-items: center;
     }
     button{
@@ -106,6 +141,14 @@ button:hover
     }
     main{
         padding-top:70px;
+    }
+    .brand-text
+    {
+        display:none;
+    }
+    .main_theme_pic
+    {
+        max-height: 200px;
     }
 }
 /* Pad and Desktop */
@@ -144,6 +187,10 @@ button:hover
 
     .footer-nav-left, .footer-nav-right {
         flex-direction: row;
+    }
+    .main_theme_pic
+    {
+        max-height: 870px;
     }
 }
 /* Конец общих стилей для index.html */
