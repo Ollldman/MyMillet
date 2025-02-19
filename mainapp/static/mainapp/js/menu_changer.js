@@ -1,18 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const signInButton = document.getElementById('signInB');
-    const authField = document.getElementById('modalAuth');
+    const menuButton = document.getElementById('menuB');
+    const MenuBlock = document.getElementById('menuBlock');
 
-    signInButton.addEventListener('click', function(event) {
+    menuButton.addEventListener('click', function(event) {
         event.preventDefault();
         
         // Показываем поле авторизации
-        authField.style.display = 'block';
+        MenuBlock.style.display = 'block';
         
         // Центрируем поле авторизации
-        authField.style.position = 'fixed';
-        authField.style.top = '50%';
-        authField.style.left = '50%';
-        authField.style.transform = 'translate(-50%, -50%)';
+        MenuBlock.style.position = 'fixed';
+        MenuBlock.style.top = '50%';
+        MenuBlock.style.left = '50%';
+        MenuBlock.style.transform = 'translate(-50%, -50%)';
+        MenuBlock.style.height = 'auto';
+        MenuBlock.style.width = '300px';
         
         // Добавляем затемнение фона
         document.body.style.backgroundColor = 'rgba(0,0,0,0.5)';
@@ -21,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Закрытие модального окна при клике вне его
     window.addEventListener('click', function(event) {
         if (event.target == authField) {
-            authField.style.display = 'none';
+            MenuBlock.style.display = 'none';
             document.body.style.backgroundColor = '';
         }
     });

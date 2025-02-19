@@ -2,6 +2,15 @@
 {% load static %}
 {% block title %}MyMillet{% endblock title %}
 {% block content %}
+<div id="menuBlock">
+    <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'mainapp/img/homepage/top_title_pic_desktop.webp'%}" alt="Main theme of our bakery." class="main_theme_pic">
+        <source media="(max-width: 1023px)" srcset="{% static 'mainapp/img/homepage/top_title_pic_mobile.webp'%}" alt="Main theme of our bakery." class="main_theme_pic">
+        <img src="{% static 'mainapp/img/homepage/top_title_pic.webp'%}" alt="Main theme of our bakery." class="main_theme_pic">
+    </picture>
+    <a href="/" class="base_nav">Home-></a>
+    <a href="products/" class="base_nav">Shop-></a>
+</div>
 <picture>
     <source media="(min-width: 1024px)" srcset="{% static 'mainapp/img/homepage/top_title_pic_desktop.webp'%}" alt="Main theme of our bakery." class="main_theme_pic">
     <source media="(max-width: 1023px)" srcset="{% static 'mainapp/img/homepage/top_title_pic_mobile.webp'%}" alt="Main theme of our bakery." class="main_theme_pic">
@@ -10,11 +19,12 @@
 <div class="central_bar">
     <a href="/" class="h-buttons" id="menuB"><button >Menu</button></a>
     <span class="brand-text" style="font-size:32px;">Backing for happiness</span>
-    <a href="/" class="base_nav">Shop-></a>
+    <a href="/products" class="base_nav">Shop-></a>
     <a href="/" class="base_nav">Who we are-></a>
 </div>
 <picture>
-    <source srcset="{% static 'mainapp/img/homepage/buttom_pic.webp'%}" alt="Main theme of our bakery." class="buttom_pic">
-    <img src="{% static 'mainapp/img/homepage/buttom_pic.webp'%}" alt="Main theme of our bakery." class="buttom_pic">
+    <source media="(min-width: 1024px)" srcset="{% static 'mainapp/img/homepage/bottom_pic.webp'%}" alt="Main theme of our bakery." class="bottom_pic">
+    <source media="(max-width: 1023px)" srcset="{% static 'mainapp/img/homepage/bottom_pic_mobile.webp'%}" alt="Main theme of our bakery." class="bottom_pic">
+    <img src="{% static 'mainapp/img/homepage/buttom_pic.webp'%}" alt="Main theme of our bakery." class="bottom_pic">
 </picture>
 {% endblock content %}

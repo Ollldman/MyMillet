@@ -12,8 +12,6 @@
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-    <!-- Динамическое окно авторизации -->
-    <div class="autorization-field" id="modalAuth"></div>
     <!-- Заголовок -->
     <header>
         <!--Логотип и название-->
@@ -28,12 +26,29 @@
         <!--Количество товаров в корзине-->
         </div>
     </header>
+        <!-- Динамическое окно авторизации -->
+        <div class="autorization-field" id="modalAuth">
+            <a href="/" class="close"><span>&times;</span></a>
+            <form id="loginForm" method="post">
+                {% csrf_token %}
+                <p>Login:</p>
+                {{ form.username }}
+                <p>Password:</p>
+                {{ form.password }}
+                <br>
+                {% if error %}
+                <p>{{ error }}</p>
+                {% endif %}
+                <button type="submit" class="inside_button">Sign Up</button>
+            </form>
+        </div>
     <main>
         {% block content %}{% endblock content %}
+        <!-- footer -->
         <footer>
             <div class="footer-navigation">
                 <div class="footer-nav-left">
-                    <a class="footer_nav_button" href="\">Shop</a>
+                    <a class="footer_nav_button" href="\products">Shop</a>
                     <a class="footer_nav_button" href="\">My profile</a>
                     <a class="footer_nav_button" href="\">Home page</a>
                 </div>
@@ -46,6 +61,7 @@
             <p class="copyright">&copy; 2025 MyMillet</p>
         </footer>
     </main>
-    <script src="{% static 'mainapp/js/autorization_field_changer' %}"></script>
+    <script src="{% static 'mainapp/js/autorization_field_changer.js' %}"></script>
+    <script src="{% static 'mainapp/js/menu_changer.js' %}"></script>
 </body>
 </html>

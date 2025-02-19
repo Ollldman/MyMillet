@@ -31,6 +31,11 @@ a
     text-decoration: none;
     color: #525B58;
 }
+p
+{
+    font-family: "Fira Sans", serif;
+    color: #525B58;
+}
 .header_left
 {
     display: flex;
@@ -46,7 +51,7 @@ a
 main{
     padding-top: 70px;
 }
-
+/* index */
 /* Главное изображение */
 .main_theme_pic
 {
@@ -55,7 +60,7 @@ main{
     display: block;
 }
 /* Нижнее изображение */
-.buttom_pic
+.bottom_pic
 {
     width: 100%;
     height: auto;
@@ -68,13 +73,14 @@ main{
     align-items: center;
     width: 100%;
     height: 100px;
-    background-color: #FFF6EA;
+    background-color: #525B58;
 }
 
 .central_bar .brand-text{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    color:#FFF6EA;
 }
 
 .central_bar .h-buttons{
@@ -84,6 +90,7 @@ main{
 .central_bar .base_nav{
     margin-left: 20px;
     margin-right: 20px;
+    color:#FFF6EA;
 }
 
 /* Общее в подвале: */
@@ -143,11 +150,56 @@ button:hover
 .base_nav:hover{
     color:#202322
 }
+/* Конец общих стилей для index.html */
+
 /* Модальная форма авторизации */
+.autorization-field {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding: 20px;
+    background-color: #FFF6EA;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
+.autorization-field form {
+    display: flex;
+    flex-direction: column;
+}
 
+.autorization-field input {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #9E6752;
+    border-radius: 5px;
+}
+.close{
+    color:#525B58;
+    font-size:40px;
+    transition: all 0.3s ease;
+}
+.close:hover{
+    color:#202322;
+    transform: scale(1.2);
+}
+/* Динамичное поле меню */
+#menuBlock{
+    display:none;
+    position: fixed;
+    z-index: 1000;
+    padding: 20px;
 
-/* media content resize */
+    background-color: #525B58;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#menuBlock .base_nav{
+    color:#fefefe;
+}
+#menuBlock .base_nav:hover{
+    color:#202322;
+}
 
 /* Mobile */
 @media (max-width: 1023px) 
@@ -162,7 +214,7 @@ button:hover
         top:0;
         left:0;
         width: 100%;
-        height: 70px;
+        height: auto;
         background-color: #FFF6EA;
         box-shadow: 0, 2px, 4px rgba(0,0,0,0.4);
         z-index:99999999;
@@ -186,7 +238,13 @@ button:hover
     }
     .main_theme_pic
     {
-        max-height: 200px;
+        max-height: 760px;
+    }
+    .central_bar{
+        height: 70px;
+    }
+    .bottom_pic{
+        max-height: 760px;
     }
     .base_nav{
         font-size:15px;
@@ -196,17 +254,20 @@ button:hover
 @media (min-width: 1024px)
 {
     body {
+        margin-right: auto;
+        margin-left: auto;
         max-width: 1440px;
-        background-color: #fefefe;
+        background-color: #FFF6EA;
         font-family: "Fira Sans", serif;
     }
     header{
         position: fixed;
         top:0;
-        left:0;
+        margin-left: auto;
+        margin-right: auto;
         width: 100%;
         max-width: 1440px;
-        height: 90px;
+        height: auto;
         background-color: #FFF6EA;
         box-shadow: 0, 2px, 4px rgba(0,0,0,0.4);
         z-index:99999999;
@@ -236,5 +297,9 @@ button:hover
         max-width: 1440px;
         max-height: 870px;
     }
+    .bottom_pic{
+        max-width: 1440px;
+        max-height: 870px;
+    }
 }
-/* Конец общих стилей для index.html */
+
