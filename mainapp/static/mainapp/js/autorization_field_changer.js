@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const signInButton = document.getElementById('signInB');
     const authField = document.getElementById('modalAuth');
+    const closeButton = document.querySelector('.close');
 
     signInButton.addEventListener('click', function(event) {
         event.preventDefault();
@@ -19,10 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Закрытие модального окна при клике вне его
-    window.addEventListener('click', function(event) {
-        if (event.target == authField) {
+    closeButton.addEventListener('click', function(event) {
             authField.style.display = 'none';
-            document.body.style.backgroundColor = '';
-        }
+            document.body.style.backgroundColor = '#FFF6EA';
     });
 });

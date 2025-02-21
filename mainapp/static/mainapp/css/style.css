@@ -156,6 +156,8 @@ button:hover
 /* Модальная форма авторизации */
 .autorization-field {
     display: none;
+    width: 300px;
+    height: 400px;
     position: fixed;
     z-index: 1000;
     padding: 20px;
@@ -176,13 +178,14 @@ button:hover
     border-radius: 5px;
 }
 .close{
-    color:#525B58;
-    font-size:40px;
-    transition: all 0.3s ease;
+    width: auto;
+    height: auto;
+    background-color:#525B58;
+    color:#FFF6EA;
+    font-size:50px;
 }
 .close:hover{
-    color:#202322;
-    transform: scale(1.2);
+    background-color:#202322;
 }
 /* Динамичное поле меню */
 #menuBlock{
@@ -335,8 +338,6 @@ button:hover
     padding: 10px;
     z-index: 1000;
 }
-
-
 
 /* Mobile */
 @media (max-width: 1023px) 

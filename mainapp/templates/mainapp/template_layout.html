@@ -10,6 +10,19 @@
     <link rel="stylesheet" href="{% static 'mainapp/css/style.css' %}">
     <link rel="icon" type="image/png" href="{% static 'mainapp/img/icon.png' %}">
     <title>{% block title %}{% endblock title %}</title>
+    <style>
+        .success_signal, .error_signal {
+            display: none; /* Скрываем сообщения по умолчанию */
+            position: fixed; /* Фиксируем позицию */
+            top: 300px; /* Отступ сверху */
+            left: 50%; /* Центрируем по горизонтали */
+            transform: translateX(-50%); /* Точное центрирование */
+            padding: 10px 20px; /* Отступы внутри */
+            border-radius: 5px; /* Скругленные углы */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень */
+            z-index: 1000; /* Убедимся, что сообщение поверх других элементов */
+        }
+    </style>
 </head>
 <body>
     <!-- Заголовок -->
@@ -28,7 +41,7 @@
     </header>
         <!-- Динамическое окно авторизации -->
         <div class="autorization-field" id="modalAuth">
-            <a href="/" class="close"><span>&times;</span></a>
+            <button class="close">&times;</button>
             <form id="loginForm" method="post">
                 {% csrf_token %}
                 <p>Login:</p>
@@ -36,13 +49,19 @@
                 <p>Password:</p>
                 {{ form.password }}
                 <br>
-                {% if error %}
-                <p>{{ error }}</p>
-                {% endif %}
-                <button type="submit" class="inside_button">Sign Up</button>
+                <button type="submit" class="inside_button">Sign In</button>
             </form>
         </div>
     <main>
+        {% if user.is_authenticated %}
+            <div id="successMessage" class="success_signal" style="background-color:aquamarine">
+                <p style="color:black;">{{ success }}</p>
+            </div>
+        {% else %}
+            <div id="errorMessage" class="error_signal" style="background-color:rgb(255, 153, 127);">
+                <p style="color:black;">{{ error }}</p>
+            </div>
+        {% endif %}
         {% block content %}{% endblock content %}
         <!-- footer -->
         <footer>
@@ -61,6 +80,32 @@
             <p class="copyright">&copy; 2025 MyMillet</p>
         </footer>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Находим сообщения
+            const successMessage = document.querySelector('#successMessage');
+            const errorMessage = document.querySelector('#errorMessage');
+    
+            // Функция для скрытия сообщения
+            function hideMessage(element) {
+                if (element) {
+                    element.style.display = 'none';
+                }
+            }
+    
+            // Показываем и скрываем successMessage
+            if (successMessage) {
+                successMessage.style.display = 'block'; // Показываем сообщение
+                setTimeout(() => hideMessage(successMessage), 5000); // Скрываем через 400 мс
+            }
+    
+            // Показываем и скрываем errorMessage
+            if (errorMessage) {
+                errorMessage.style.display = 'block'; // Показываем сообщение
+                setTimeout(() => hideMessage(errorMessage), 5000); // Скрываем через 400 мс
+            }
+        });
+    </script>
     <script src="{% static 'mainapp/js/autorization_field_changer.js' %}"></script>
     <script src="{% static 'mainapp/js/menu_changer.js' %}"></script>
 </body>
