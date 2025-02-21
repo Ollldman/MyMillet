@@ -5,9 +5,9 @@
     <div class="context_bar">
         <p style="font-size:60px;">Shop</p>
         <span class="left_buttons_context_bar">
-            <button>Default</button>
+            <button>Filter</button>
             <button>A-Z</button>
-            <button>List view</button>
+            <button>Default</button>
         </span>
     </div>
     <hr>
@@ -16,10 +16,21 @@
         <div class="product-card">
             <img src="{{ product.image.url }}" alt="{{ product.name }}">
             <p class="product_name">{{ product.name }}</p>
-            <p class="product_price">${{ product.price }}</p>
             <p class="product_description">{{ product.description|truncatewords:10 }}</p>
-            <input class="product_input_field" type="number" name="quantity" max="{{ product.stock_quantity }}" value="1">
-            <button class="h-buttons">Add</button>
+            <p class="product_price">${{ product.price }}</p>
+            <button class="add_to_cart" data-product-id="{{ product.id }}">Add</button>
+            <!-- Динамическое поле -->
+            <p id="notification" style="display: none; color:#ec582f;">Max Value!</p>
+            <div class="quantity_input" style="display: none;">
+                <span class="quantity_input_left">
+                    <button class="go_to_cart">Go to cart</button>
+                </span>
+                <span class="quantity_input_right">
+                    <button class="minus" data-product-id="{{ product.id }}">-</button>
+                    <span class="quantity" data-stock="{{ product.stock_quantity }}">1</span>
+                    <button class="plus" data-product-id="{{ product.id }}">+</button>
+                </span>
+            </div>
         </div>
         {% if forloop.counter|divisibleby:3 %}
         <div style="clear: both;"></div>
@@ -27,5 +38,5 @@
     {% endfor %}
     <br>
     <hr>
-    <br>
+    <script src="{% static 'mainapp/js/product_card_changer.js' %}"></script>
 {% endblock content %}
