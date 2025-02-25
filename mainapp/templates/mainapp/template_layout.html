@@ -35,7 +35,20 @@
         <!--Кнопки-->
         <div class="header_right">
             <a href="/" class="h-buttons" id="basketB"><button>Basket</button></a>
+            <!-- Авторизация и изменение кнопки авторизации -->
+            {% if user.is_authenticated %}
+            <div class="dropdown-menu">
+                <button class="dropdown-button">
+                    {{ user.username }}
+                </button>
+                <div class="dropdown-content">
+                    <a href="{% url 'logout' %}">Logout</a>
+                    <a href="\">My Cart</a>
+                </div>
+            </div>
+            {% else %}
             <a href="/" class="h-buttons" id="signInB"><button>Sign in</button></a>
+            {% endif %}
         <!--Количество товаров в корзине-->
         </div>
     </header>
@@ -53,15 +66,6 @@
             </form>
         </div>
     <main>
-        {% if user.is_authenticated %}
-            <div id="successMessage" class="success_signal" style="background-color:aquamarine">
-                <p style="color:black;">{{ success }}</p>
-            </div>
-        {% else %}
-            <div id="errorMessage" class="error_signal" style="background-color:rgb(255, 153, 127);">
-                <p style="color:black;">{{ error }}</p>
-            </div>
-        {% endif %}
         {% block content %}{% endblock content %}
         <!-- footer -->
         <footer>
@@ -80,33 +84,9 @@
             <p class="copyright">&copy; 2025 MyMillet</p>
         </footer>
     </main>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Находим сообщения
-            const successMessage = document.querySelector('#successMessage');
-            const errorMessage = document.querySelector('#errorMessage');
-    
-            // Функция для скрытия сообщения
-            function hideMessage(element) {
-                if (element) {
-                    element.style.display = 'none';
-                }
-            }
-    
-            // Показываем и скрываем successMessage
-            if (successMessage) {
-                successMessage.style.display = 'block'; // Показываем сообщение
-                setTimeout(() => hideMessage(successMessage), 5000); // Скрываем через 400 мс
-            }
-    
-            // Показываем и скрываем errorMessage
-            if (errorMessage) {
-                errorMessage.style.display = 'block'; // Показываем сообщение
-                setTimeout(() => hideMessage(errorMessage), 5000); // Скрываем через 400 мс
-            }
-        });
-    </script>
+    <!-- Общие скрипты -->
     <script src="{% static 'mainapp/js/autorization_field_changer.js' %}"></script>
     <script src="{% static 'mainapp/js/menu_changer.js' %}"></script>
+    {% block scripts %}{% endblock %}
 </body>
 </html>

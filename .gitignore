@@ -22,6 +22,7 @@ media/
 
 # Configuration files
 *.env
+*.ps1
 
 # IDEs and Editors
 .vscode/

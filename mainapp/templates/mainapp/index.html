@@ -2,6 +2,17 @@
 {% load static %}
 {% block title %}MyMillet{% endblock title %}
 {% block content %}
+<!-- Проверка авторизованности пользователя: -->
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+            <div id="successMessage" class="success_signal" style="background-color:aquamarine">
+                <p style="color:black;">{{ success }}</p>
+            </div>
+        {% else %}
+            <div id="errorMessage" class="error_signal" style="background-color:rgb(255, 153, 127);">
+                <p style="color:black;">{{ error }}</p>
+            </div>
+        {% endif %}
 <div id="menuBlock">
     <picture>
         <source media="(min-width: 1024px)" srcset="{% static 'mainapp/img/homepage/top_title_pic_desktop.webp'%}" alt="Main theme of our bakery." class="main_theme_pic">
@@ -28,3 +39,7 @@
     <img src="{% static 'mainapp/img/homepage/buttom_pic.webp'%}" alt="Main theme of our bakery." class="bottom_pic">
 </picture>
 {% endblock content %}
+{% block scripts %}
+<!-- Скрипт только для главной страницы -->
+<script src="{% static 'mainapp/js/success_message_changer.js' %}"></script>
+{% endblock %}
