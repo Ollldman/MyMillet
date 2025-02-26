@@ -9,8 +9,8 @@ This online store is a fully functional web application that allows users to bro
 ### Key Features:
 - **Product Catalog**: An intuitive and user-friendly interface for browsing products.
 - **Shopping Cart**: Ability to add products to the cart and place orders.
-- **User Profile**: Manage your profile, view order history, and update personal information.
-- **Admin Panel**: Convenient management of products, orders, and users for administrators.
+- **User Profile**: Manage your profile, view order history, and update personal information. (in progress)
+- **Admin Panel**: Convenient management of products, orders, and users for administrators. (in progress)
 
 ## Technologies Used
 
@@ -140,8 +140,8 @@ django-environ==0.11.2
 ### Основные функции:
 - **Каталог товаров**: Удобный и интуитивно понятный интерфейс для просмотра товаров.
 - **Корзина покупок**: Возможность добавлять товары в корзину и оформлять заказы.
-- **Личный кабинет**: Управление профилем, просмотр истории заказов и изменение личных данных.
-- **Админ-панель**: Удобное управление товарами, заказами и пользователями для администратора.
+- **Личный кабинет**: Управление профилем, просмотр истории заказов и изменение личных данных. (в разработке)
+- **Админ-панель**: Удобное управление товарами, заказами и пользователями для администратора. (в разработке)
 
 ## Использованные технологии
 
