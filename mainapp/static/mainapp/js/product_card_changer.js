@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const quantitySpan = card.querySelector('.quantity');
         const notification = card.querySelector('#notification');
         const stockQuantity = parseInt(quantitySpan.getAttribute('data-stock'));
+        const goToCartButton = card.querySelector('.go_to_cart');
+        const productId = goToCartButton.getAttribute('data-product-id');
 
         let quantity = 1;
 
@@ -46,8 +48,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     notification.style.display = 'none';
                 }, 400);
             }
+        });
 
+        goToCartButton.addEventListener('click', function(){
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            const quantity = quantitySpan.textContent;
+            console.log("Добавлен товар ID:", productId);
+            fetch("/cart/add_to_cart/", {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrfToken,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `product_id=${productId}&quantity=${quantity}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                const cartCount = document.getElementById('cart-count');
+                if (cartCount){
+                    cartCount.textContent = data.total_positions
+                }
+                if (data.success) {
+                    alert('Товар добавлен в корзину');
+                } else {
+                    alert('Ошибка: ' + data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
         });
     });
-
 });

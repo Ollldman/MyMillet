@@ -1,0 +1,38 @@
+{% extends "mainapp/template_layout.html" %}
+{% load static %}
+
+{% block title %}Cart{% endblock title %}
+
+{% block content %}
+    <div class="context_bar">
+        <p style="font-size:60px;">Cart</p>
+    </div>
+    <hr>
+    <br>
+    {% if request.session.cart %}
+    <div class="field_products">
+            {% for item in cart_items %}
+                <div class="cart_product_card">
+                    <span class="left_img_cart_card">
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    </span>
+                    <span class="right_text_cart_card">
+                    <p>{{ item.product.name }}   <strong>X{{ item.quantity }} ${{ item.product.price }}</strong> </p>
+                    <p id="total_price_card">Total: ${{ item.total_price|floatformat:2 }}</p>
+                    </span>
+                </div>
+            {% endfor %}
+    </div>
+    <div class="create_order_field">
+        <hr>
+        <p>Total:</p>
+        <p>Summary: ${{ cart.get_summary|floatformat:2 }}</p>
+        <a href="{% url 'create_order' %}"><button class="add_to_cart">Create Order</button></a>
+    </div>
+    {% else %}
+        <p>Cart is empty.</p>
+    {% endif %}
+{% endblock content %}
+
+{% block scripts %}
+{% endblock %}

@@ -22,8 +22,9 @@
             <!-- Динамическое поле -->
             <p id="notification" style="display: none; color:#ec582f;">Max Value!</p>
             <div class="quantity_input" style="display: none;">
+                {% csrf_token %}
                 <span class="quantity_input_left">
-                    <button class="go_to_cart">Go to cart</button>
+                    <button class="go_to_cart" data-product-id="{{ product.id }}">Add to cart</button>
                 </span>
                 <span class="quantity_input_right">
                     <button class="minus" data-product-id="{{ product.id }}">-</button>
@@ -38,5 +39,4 @@
     {% endfor %}
     <br>
     <hr>
-    <script src="{% static 'mainapp/js/product_card_changer.js' %}"></script>
 {% endblock content %}

@@ -34,7 +34,12 @@
         </div>
         <!--Кнопки-->
         <div class="header_right">
-            <a href="/" class="h-buttons" id="basketB"><button>Basket</button></a>
+            <a href="{% url 'cart' %}" class="h-buttons" id="basketB"><button>Cart
+                <!--Количество товаров в корзине-->
+                {% if request.session.cart %}
+                <span id="cart-count">({{ cart_total_positions }})</span>
+                {% endif %}
+            </button></a>
             <!-- Авторизация и изменение кнопки авторизации -->
             {% if user.is_authenticated %}
             <div class="dropdown-menu">
@@ -49,7 +54,6 @@
             {% else %}
             <a href="/" class="h-buttons" id="signInB"><button>Sign in</button></a>
             {% endif %}
-        <!--Количество товаров в корзине-->
         </div>
     </header>
         <!-- Динамическое окно авторизации -->
@@ -87,6 +91,7 @@
     <!-- Общие скрипты -->
     <script src="{% static 'mainapp/js/autorization_field_changer.js' %}"></script>
     <script src="{% static 'mainapp/js/menu_changer.js' %}"></script>
+    <script src="{% static 'mainapp/js/product_card_changer.js' %}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
