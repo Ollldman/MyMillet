@@ -1,6 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     const productCards = document.querySelectorAll('.product-card');
-
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
+    // Реализуем динамический поиск
+    // Кнопка поиска
+    searchButton.addEventListener('click', () => {
+        searchInput.style.display = 'inline-block';
+        searchButton.style.display = 'none';
+        searchInput.focus();
+    });
+    // Обработка поиска
+    searchInput.addEventListener('input', function() {
+        const query = searchInput.value.trim().toLowerCase();
+        productCards.forEach(card => {
+            const productName = card.querySelector('.product_name').textContent.toLowerCase();
+            if (productName.includes(query)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+    // ВОзвращаем кнопку если поле пустое и потеряло фокус
+    searchInput.addEventListener('blur', function() {
+        if (searchInput.value.trim() === '') {
+            searchInput.style.display = 'none';
+            searchButton.style.display = 'inline-block';
+        }
+    });
+    // Обработка карточки - добавление в корзину, выбор количества
     productCards.forEach(card => {
         const addToCartButton = card.querySelector('.add_to_cart');
         const quantityInput = card.querySelector('.quantity_input');
@@ -11,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const stockQuantity = parseInt(quantitySpan.getAttribute('data-stock'));
         const goToCartButton = card.querySelector('.go_to_cart');
         const productId = goToCartButton.getAttribute('data-product-id');
-
         let quantity = 1;
 
         addToCartButton.addEventListener('click', function() {
@@ -49,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 400);
             }
         });
-
+        // Добавление в корзину
         goToCartButton.addEventListener('click', function(){
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
             const quantity = quantitySpan.textContent;

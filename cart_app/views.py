@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .cart import Cart
 from .models import Order, OrderItem
 
-# Create your views here.
+# Обработка страницы корзины с созданием объекта корзины и наполнением её списком продуктов
 def cart(request):
     cart = Cart(request)
     cart_items = []
@@ -23,6 +23,7 @@ def cart(request):
     }
     return render(request, 'cart_app/cart.html', context)
 
+# Обработка POST запроса на добавление в корзину из карточки товара
 @require_POST
 def add_to_cart(request):
     product_id = request.POST.get('product_id')
@@ -40,7 +41,7 @@ def add_to_cart(request):
             'summary': float(cart.get_summary())})
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
-
+# Пост запрос на создание заказа только для авторизованных пользователей:
 @login_required
 def create_order(request):
     cart = Cart(request)

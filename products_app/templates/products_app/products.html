@@ -4,14 +4,19 @@
 {% block content %}
     <div class="context_bar">
         <p style="font-size:60px;">Shop</p>
-        <span class="left_buttons_context_bar">
-            <button>Filter</button>
+        <span class="right_buttons_context_bar">
+            <!-- Реализация поиска: -->
+             <div id="search_container">
+                <button id="search-button">Search</button>
+                <input type="text" id="search-input" placeholder="Search by name..." style="display: none;">
+            </div>
             <button>A-Z</button>
             <button>Default</button>
         </span>
     </div>
     <hr>
     <br>
+    <div id="product-container">
     {% for product in products %}
         <div class="product-card">
             <img src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -37,6 +42,7 @@
         <div style="clear: both;"></div>
         {% endif %}
     {% endfor %}
+    </div>
     <br>
     <hr>
 {% endblock content %}
