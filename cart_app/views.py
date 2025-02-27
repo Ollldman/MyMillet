@@ -50,4 +50,4 @@ def create_order(request):
         OrderItem.objects.create(order_id=order, product=item["product"], quantity=item["quantity"])
     cart.cart.clear()
     cart.save()
-    return redirect('cart')
+    return render(request, 'cart_app/order_success.html')
