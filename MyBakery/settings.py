@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp',
     'products_app',
-    'cart_app'
+    'cart_app',
+    'contact_app'
 ]
 
 CART_SESSION_ID = 'cart'

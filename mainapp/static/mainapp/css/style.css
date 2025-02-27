@@ -433,6 +433,46 @@ button:hover
 .create_order_field p{
     color: white;
 }
+/* Стили формы обратной связи */
+#contact-form{
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    margin:10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    padding:30px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    color:#202322;
+    font-family: 'Fira Sans';
+    font-size: 12px;
+}
+
+.form-control {
+    height: 30px;
+    margin-top: 10px;
+    border: 1px solid #525B58;
+    border-radius: 4px;
+    color:#ec582f;
+    font-family: 'Fira Sans';
+    font-size: 12px;
+}
+.form-control-area{
+    border: 1px solid #525B58;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
 /* Раздел адаптивного стиля */
 /* Mobile */
 @media (max-width: 1023px) 

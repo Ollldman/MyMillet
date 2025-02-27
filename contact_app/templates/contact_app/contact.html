@@ -1,0 +1,76 @@
+{% extends 'mainapp/template_layout.html' %}
+{% load static %}
+{% block title %}Contact{% endblock title %}
+
+{% block content %}
+    <div class="context_bar">
+        <p style="font-size:60px;">Contact form</p>
+    </div>
+    <hr>
+    <br>
+    <form method="post" id="contact-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            <div class="error-message" id="name-error" style="color: red; display: none;">Это поле обязательно.</div>
+        </div>
+        <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            <div class="error-message" id="email-error" style="color: red; display: none;">Это поле обязательно.</div>
+        </div>
+        <div class="form-group">
+            {{ form.subject.label_tag }}
+            {{ form.subject }}
+            <div class="error-message" id="subject-error" style="color: red; display: none;">Это поле обязательно.</div>
+        </div>
+        <div class="form-group">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+            <div class="error-message" id="message-error" style="color: red; display: none;">Это поле обязательно.</div>
+        </div>
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const fields = [
+                { input: form.querySelector('#id_name'), error: document.getElementById('name-error') },
+                { input: form.querySelector('#id_email'), error: document.getElementById('email-error') },
+                { input: form.querySelector('#id_subject'), error: document.getElementById('subject-error') },
+                { input: form.querySelector('#id_message'), error: document.getElementById('message-error') }
+            ];
+
+            fields.forEach(field => {
+                field.input.addEventListener('blur', function() {
+                    if (field.input.value.trim() === '') {
+                        field.error.style.display = 'block';
+                    } else {
+                        field.error.style.display = 'none';
+                    }
+                });
+
+                field.input.addEventListener('input', function() {
+                    if (field.input.value.trim() !== '') {
+                        field.error.style.display = 'none';
+                    }
+                });
+            });
+
+            form.addEventListener('submit', function(event) {
+                let hasErrors = false;
+                fields.forEach(field => {
+                    if (field.input.value.trim() === '') {
+                        field.error.style.display = 'block';
+                        hasErrors = true;
+                    }
+                });
+                if (hasErrors) {
+                    event.preventDefault();  // Останавливаем отправку формы
+                }
+            });
+        });
+    </script>
+{% endblock content %}
